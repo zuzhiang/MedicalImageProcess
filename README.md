@@ -1,0 +1,22 @@
+数据很杂，就懒得逐一整理了，很多都是实验性的，可能存在问题，不过好久没弄也忘得差不多，有问题的话还请大家自行阅读代码解决吧，下面只把每个文件是做什么用的大体说一下：
+
+- data`：3D图像和形变场数据
+- `phi`：
+  - `my_show_grid.py`：先产生规则的网格图片，然后使用STN根据读入的形变场对其变形
+  - `show_grid.py`：读入形变场的.nii文件，然后生成可视化的形变场图片
+- `show_nii`：
+  - `show_nii.py`：展示三维的.nii图像
+  - `show_nii3.py`：同时展示三维的.nii格式的器官、器官分割mask、病灶分割mask图像
+- `ants.py`：使用ANTs包内的SyN对图像进行配准
+- `antspy.py`：使用基于python版的ANTs——antspy对图像和其对应的标签同时进行配准
+- `CBAM`：CBAM注意力模块的实现
+- `crop_resize.py`：先找到包含脑部区域的最小矩形框，然后手动计算矩形框的大小（每一维应该是16的倍数），然后用已经注释掉的部分进行resize
+- `data_augmentation.py`：数据增强的代码，包括B样条采样、反转、平移、缩放、旋转、灰度值均衡化等，但B样条采样貌似有问题
+- `dcm2nii.py`：将dcm格式的三维图像转换为.nii格式的
+- `FreeSurfer+FSL.py`：先用FreeSurfer对脑部图像进行颅骨剥离，然后用FSL对图像和标签同时进行仿射对齐
+- `FreeSurfer.py`：用FreeSurfer对脑部图像进行颅骨剥离
+- `image_combine_example.py`：别人给的，没用过
+- `img2nii.py`：将.img格式的三维图像转化为.nii格式的
+- `jacobian.py`：计算形变场的雅克比行列式
+- `resize_img.py`：对图像进行resize
+- `tor_datagenerators.py`：基于pytorch的数据生成器
